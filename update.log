@@ -1,0 +1,10 @@
+2021-01-29  ZHOUYY  gpu_increace_in_period()函数中rise_time列表在返回前增加排序。
+2021-02-03  ZHOUYY  gpu_increace_in_period()函数返回列表中还要多加一个上一个作业的sub_tim，因为有可能有提交时间相同或相近的作业存在。
+2021-02-03  ZHOUYY  br4-no分支的判断之前判断条件错误，现将判断是否有空闲GPU资源改成是否有【足够】的GPU资源。
+2021-02-05  ZHOUYY  函数get_able_job_in_wait_q()中改成考虑2个因素。之前只考虑资源是否充足，现在还需要考虑如果是之前中断的作业，中断时间是不是在当前time之前，必须是中断时间点在当前时间点之前才能提交。
+2021-02-05  ZHOUYY  在init()函数中添加校验：workload.csv中一个作业的提交时间必须是0，否则报错。
+2021-02-05  ZJiaWei 添加gen_error_new()函数。
+2021-02-07  ZHOUYY  将原来的gen_error()函数改成gen_error_old()，将原来的gen_error_new()函数改成gen_error()函数。
+2021-02-09  ZHOUYY  修改gpu_limit_time()时间预估函数。
+2021-02-21  ZHOUYY  完善README.md的4.5章节。
+2021-02-22  ZHOUYY  勘误README.md部分内容。

@@ -1,0 +1,48 @@
+$ python3 Simulator.py 
+The workloads are: 
+	 {'job_ID': '0000', 'submit_time': 100, 'running_time': 500, 'GPU_num': 5, 'decay': 1.0, 'restart': 0, 'score': 1.0, 'real_sub': 100, 'real_running': 500, 'preempt_times': 0, 'err_times': 0, 'place_times': 0, 'finish_flag': False}
+	 {'job_ID': '0001', 'submit_time': 201, 'running_time': 200, 'GPU_num': 5, 'decay': 1.0, 'restart': 0, 'score': 2.0, 'real_sub': 200, 'real_running': 200, 'preempt_times': 0, 'err_times': 0, 'place_times': 0, 'finish_flag': False}
+	 {'job_ID': '0002', 'submit_time': 201, 'running_time': 600, 'GPU_num': 2, 'decay': 1.0, 'restart': 0, 'score': 1.0, 'real_sub': 300, 'real_running': 100, 'preempt_times': 0, 'err_times': 0, 'place_times': 0, 'finish_flag': False}
+	 {'job_ID': '0003', 'submit_time': 1000, 'running_time': 100, 'GPU_num': 3, 'decay': 1.0, 'restart': 0, 'score': 1.0, 'real_sub': 300, 'real_running': 100, 'preempt_times': 0, 'err_times': 0, 'place_times': 0, 'finish_flag': False}
+Generating error situation...\
+[Predictor]: The predicted total running time of all workloads is 1100s.
+Err: {1: [[324, 459], [180, 90]]}
+workloads len: 4, wait_q len: 0.
+[Info]: Waiting queue is empty. Job 0000 in workflow will be submit.
+free gpus: [0, 1, 2, 3, 4]   sub time: 100
+[Info]: Job 0000 is preempted by other jobs when time=200.
+[Info]: Moved job 0000 from workload to wait_q because of preemption.
+[Info]: The preemption job is 0001.
+workloads len: 3, wait_q len: 1.
+[Info]: Job 0001 in workflow will be submit because of its high priority.
+free gpus: [0, 1, 2, 3, 4]   sub time: 201
+[Info]: Job 0001 is suspended because of device error when time=323.
+[Info]: Moved job 0001 from workload to wait_q because of device error.
+workloads len: 2, wait_q len: 2.
+free gpus: []   sub time: 201
+[Info]: Moved job 0002 from workloads to wait_q because there is not enough GPU resource.
+workloads len: 1, wait_q len: 3.
+free gpus: [0, 2, 3, 4]   sub time: 324
+[Info]: Job 0002 has no interruption during running period.
+[Info]: Moved job 0002 from wait_q to finish_dict.
+workloads len: 1, wait_q len: 2.
+free gpus: [0, 1, 2, 3, 4]   sub time: 925
+[Info]: Job 0001 has no interruption during running period.
+[Info]: Moved job 0001 from wait_q to finish_dict.
+workloads len: 1, wait_q len: 1.
+free gpus: []   sub time: 1000
+[Info]: Moved job 0003 from workloads to wait_q because there is not enough GPU resource.
+workloads len: 0, wait_q len: 2.
+free gpus: [0, 1, 2, 3, 4]   sub time: 1004
+[Info]: Job 0000 has no interruption during running period.
+[Info]: Moved job 0000 from wait_q to finish_dict.
+workloads len: 0, wait_q len: 1.
+free gpus: [0, 1, 2, 3, 4]   sub time: 1405
+[Info]: Job 0003 has no interruption during running period.
+[Info]: Moved job 0003 from wait_q to finish_dict.
+finish_dict: 
+The original running data: 
+	 0000 :  [[100, 200, [0, 2, 3, 4, 1], 'preempt'], [1004, 1404, [3, 2, 0, 1, 4], 'None']]
+	 0001 :  [[201, 323, [1, 4, 0, 2, 3], 'err'], [925, 1003, [0, 4, 3, 2, 1], 'None']]
+	 0002 :  [[324, 924, [3, 2], 'None']]
+	 0003 :  [[1405, 1505, [1, 2, 4], 'None']]

@@ -1,0 +1,5 @@
+job_ID,submit_time,running_time,GPU_num,restart,preempt_times,err_times,score,type
+0,0,653,1,0,0,0,1,Seq2Seq
+1,0,313,4,0,0,0,1,Seq2Seq
+2,0,653,4,0,0,0,1,Seq2Seq
+3,0,313,1,0,0,0,1,Seq2Seq
